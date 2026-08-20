@@ -1,7 +1,7 @@
 import { Product } from "@/types";
 
 export const products: Product[] = [
-  // ─── Robes Courtes ────────────────────────────────────────────────────────
+  // Robes Courtes
   {
     id: "rc-001",
     slug: "robe-ambre",
@@ -79,7 +79,7 @@ export const products: Product[] = [
     isNew: true,
   },
 
-  // ─── Robes Longues ────────────────────────────────────────────────────────
+  // Robes Longues
   {
     id: "rl-001",
     slug: "robe-riviera",
@@ -155,7 +155,7 @@ export const products: Product[] = [
     isNew: true,
   },
 
-  // ─── Ensembles ────────────────────────────────────────────────────────────
+  // Ensembles
   {
     id: "en-001",
     slug: "ensemble-ivoire",
@@ -236,7 +236,7 @@ export const products: Product[] = [
     isNew: true,
   },
 
-  // ─── Nouveautés ───────────────────────────────────────────────────────────
+  // Nouveautés
   {
     id: "nv-001",
     slug: "robe-seraphine",

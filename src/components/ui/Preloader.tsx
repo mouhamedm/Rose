@@ -1,12 +1,5 @@
 "use client";
 
-// Preloader: cinematic dark-screen experience with the ROSÉ logo only.
-// Animation sequence:
-//  1. Black screen appears instantly
-//  2. Logo fades + scales in from slight distance
-//  3. Progress line sweeps across
-//  4. Logo fades out upward
-//  5. Overlay slides UP (curtain lift) revealing the site
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { registerGSAPPlugins } from "@/lib/gsap";
@@ -34,14 +27,14 @@ export default function Preloader() {
       },
     });
 
-    // ── Phase 1: Logo rises from depth, fades in
+    // Phase 1
     tl.fromTo(
       logo,
       { scale: 0.8, opacity: 0, filter: "blur(8px)" },
       { scale: 1, opacity: 1, filter: "blur(0px)", duration: 1.1, ease: "power3.out" }
     )
 
-    // ── Phase 2: Progress line sweeps right
+    // Phase 2
     .fromTo(
       line,
       { scaleX: 0, transformOrigin: "left" },
@@ -49,16 +42,15 @@ export default function Preloader() {
       "-=0.1"
     )
 
-    // ── Brief hold at full presence
     .to({}, { duration: 0.3 })
 
-    // ── Phase 3: Logo + line fade and drift up
+    // Phase 3
     .to(
       [logo, line],
       { opacity: 0, y: -30, duration: 0.55, ease: "power2.in", stagger: 0.06 }
     )
 
-    // ── Phase 4: Overlay slides UP — curtain lift revealing site
+    // Phase 4
     .to(
       overlay,
       { yPercent: -100, duration: 0.9, ease: "power3.inOut" },

@@ -30,4 +30,3 @@ An **exquisite, high-end fashion e-commerce experience** built with Next.js, Tai
 ## Preview
 
 ![ROSÉ Preview](public/images/preview.png)
-# Ros-

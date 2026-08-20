@@ -1,6 +1,5 @@
 "use client";
 
-// Lookbook: immersive scroll-storytelling with GSAP pin + parallax scenes
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
@@ -38,7 +37,6 @@ export default function LookbookPage() {
   useEffect(() => {
     registerGSAPPlugins();
 
-    // Parallax on each scene image
     sceneRefs.current.forEach((scene,) => {
       if (!scene) return;
       const img = scene.querySelector(".scene-image");
@@ -57,7 +55,6 @@ export default function LookbookPage() {
         });
       }
 
-      // Text reveal from opacity 0 to 1
       if (text) {
         gsap.fromTo(
           text,
@@ -82,14 +79,14 @@ export default function LookbookPage() {
   return (
     <div className="pt-24 lg:pt-32 pb-24 overflow-hidden">
       {/* Header */}
-      <div className="px-6 lg:px-12 max-w-[1400px] mx-auto mb-24">
-        <p className="text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-rose-main)] mb-3">
+      <div className="px-6 lg:px-12 max-w-350 mx-auto mb-24">
+        <p className="text-[0.65rem] tracking-[0.3em] uppercase text-rose-main mb-3">
           Éditorial
         </p>
-        <SplitTitle as="h1" className="text-[clamp(2.5rem,7vw,6rem)] text-[var(--color-ink)]">
+        <SplitTitle as="h1" className="text-[clamp(2.5rem,7vw,6rem)] text-ink">
           Lookbook
         </SplitTitle>
-        <p className="mt-4 text-sm text-[var(--color-ink-soft)] max-w-md leading-relaxed">
+        <p className="mt-4 text-sm text-ink-soft max-w-md leading-relaxed">
           Chaque pièce ROSÉ raconte une histoire. Laissez-vous porter par ces
           mises en scène qui capturent l&apos;essence de la collection.
         </p>
@@ -104,13 +101,13 @@ export default function LookbookPage() {
             ref={(el) => { sceneRefs.current[sceneIndex] = el; }}
             className={[
               "relative min-h-[80vh] flex items-center overflow-hidden mb-6",
-              sceneIndex % 3 === 0 ? "bg-[var(--color-cream)]" : "bg-[var(--color-rose-blush)]",
+              sceneIndex % 3 === 0 ? "bg-cream" : "bg-rose-blush",
             ].join(" ")}
           >
             {/* Parallax image */}
             <div
               className={[
-                "scene-image absolute top-0 w-full lg:w-1/2 h-[120%] -translate-y-[10%]",
+                "scene-image absolute top-0 w-full lg:w-1/2 h-[120%] translate-y-[-10%]",
                 isEven ? "left-0" : "right-0",
               ].join(" ")}
             >
@@ -125,8 +122,8 @@ export default function LookbookPage() {
                 className={[
                   "absolute inset-0",
                   isEven
-                    ? "bg-gradient-to-r from-transparent to-[var(--color-cream)]/80"
-                    : "bg-gradient-to-l from-transparent to-[var(--color-rose-blush)]/80",
+                    ? "bg-linear-to-r from-transparent to-cream/80"
+                    : "bg-linear-to-l from-transparent to-rose-blush/80",
                 ].join(" ")}
               />
             </div>
@@ -138,16 +135,16 @@ export default function LookbookPage() {
                 isEven ? "ml-auto" : "",
               ].join(" ")}
             >
-              <p className="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-rose-main)] mb-4">
+              <p className="text-[0.6rem] tracking-[0.3em] uppercase text-rose-main mb-4">
                 {scene.setting}
               </p>
-              <blockquote className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-[var(--color-ink)] leading-tight italic max-w-md">
+              <blockquote className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-ink leading-tight italic max-w-md">
                 « {scene.quote} »
               </blockquote>
-              <p className="mt-4 font-serif text-xl text-[var(--color-ink-soft)] font-light">
+              <p className="mt-4 font-serif text-xl text-ink-soft font-light">
                 {scene.product.name}
               </p>
-              <p className="mt-1 text-xs text-[var(--color-ink-soft)]/60">
+              <p className="mt-1 text-xs text-ink-soft/60">
                 {scene.product.price.toLocaleString("fr-FR")} €
               </p>
               <div className="mt-8">

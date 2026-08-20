@@ -5,7 +5,6 @@ import ProductGrid from "@/components/catalog/ProductGrid";
 import SplitTitle from "@/components/ui/SplitTitle";
 import type { Metadata } from "next";
 
-// Generate static routes for all category slugs at build time
 export function generateStaticParams() {
   return categories.map((cat) => ({ category: cat.slug }));
 }
@@ -33,17 +32,17 @@ export default async function CategoryPage(
   const categoryProducts = getProductsByCategory(category);
 
   return (
-    <div className="pt-32 lg:pt-40 pb-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+    <div className="pt-32 lg:pt-40 pb-24 px-6 lg:px-12 max-w-350 mx-auto">
       {/* Breadcrumb */}
-      <p className="text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-rose-main)] mb-3">
+      <p className="text-[0.65rem] tracking-[0.3em] uppercase text-rose-main mb-3">
         Collection / {cat.name}
       </p>
 
-      <SplitTitle as="h1" className="text-[clamp(2.5rem,6vw,5rem)] text-[var(--color-ink)]">
+      <SplitTitle as="h1" className="text-[clamp(2.5rem,6vw,5rem)] text-ink">
         {cat.name}
       </SplitTitle>
 
-      <p className="mt-4 text-[var(--color-ink-soft)] text-sm max-w-md leading-relaxed mb-12">
+      <p className="mt-4 text-ink-soft text-sm max-w-md leading-relaxed mb-12">
         {cat.description} — {categoryProducts.length} pièce
         {categoryProducts.length > 1 ? "s" : ""}
       </p>

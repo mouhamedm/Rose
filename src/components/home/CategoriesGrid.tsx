@@ -1,7 +1,5 @@
 "use client";
 
-// CategoriesGrid: 4 categories displayed with image, hover clip-path reveal,
-// and stagger entrance animation on scroll.
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,16 +46,16 @@ export default function CategoriesGrid() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 lg:py-32 px-6 lg:px-12 max-w-[1400px] mx-auto"
+      className="py-24 lg:py-32 px-6 lg:px-12 max-w-350 mx-auto"
     >
       {/* Section header */}
       <div className="flex items-end justify-between mb-12 gap-4 flex-wrap">
-        <SplitTitle as="h2" className="text-[clamp(2rem,5vw,3.5rem)] text-[var(--color-ink)]">
+        <SplitTitle as="h2" className="text-[clamp(2rem,5vw,3.5rem)] text-ink">
           Nos catégories
         </SplitTitle>
         <Link
           href="/collection"
-          className="text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-rose-main)] hover:text-[var(--color-rose-deep)] transition-colors border-b border-[var(--color-rose-main)] pb-0.5"
+          className="text-[0.65rem] tracking-[0.2em] uppercase text-rose-main hover:text-rose-deep transition-colors border-b border-rose-main pb-0.5"
         >
           Voir tout →
         </Link>
@@ -69,7 +67,7 @@ export default function CategoriesGrid() {
           <Link
             key={cat.slug}
             href={`/collection/${cat.slug}`}
-            className="group relative overflow-hidden aspect-[4/3] block"
+            className="group relative overflow-hidden aspect-4/3 block"
           >
             {/* Image with zoom */}
             <Image
@@ -92,9 +90,9 @@ export default function CategoriesGrid() {
                 {cat.description}
               </p>
               {/* Underline reveal on hover */}
-              <span className="mt-4 text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-rose-soft)] flex items-center gap-2">
+              <span className="mt-4 text-[0.65rem] tracking-[0.2em] uppercase text-rose-soft flex items-center gap-2">
                 Explorer
-                <span className="inline-block w-0 group-hover:w-8 h-px bg-[var(--color-rose-soft)] transition-all duration-500" />
+                <span className="inline-block w-0 group-hover:w-8 h-px bg-rose-soft transition-all duration-500" />
               </span>
             </div>
           </Link>

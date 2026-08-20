@@ -1,7 +1,5 @@
 "use client";
 
-// Brand statement: editorial full-bleed section with clip-path reveal
-// and large typographic quote. Creates a visual break between product sections.
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
@@ -19,7 +17,7 @@ export default function BrandStatement() {
     const section = sectionRef.current;
     if (!section) return;
 
-    // Clip-path reveal: section expands from center on scroll enter
+    // Clip-path reveal
     gsap.fromTo(
       section,
       { clipPath: "inset(8% 4% round 2px)" },
@@ -64,7 +62,7 @@ export default function BrandStatement() {
       }
     );
 
-    // Capture ref values so the cleanup uses the same node that was subscribed
+    // Capture ref values
     const sectionEl = section;
     const quoteEl = quoteRef.current;
 
@@ -80,7 +78,7 @@ export default function BrandStatement() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[80vh] min-h-[650px] overflow-hidden flex items-center justify-center"
+      className="relative h-[80vh] min-h-162.5 overflow-hidden flex items-center justify-center"
       style={{ clipPath: "inset(3% 2% round 4px)" }}
     >
       {/* Background image */}
@@ -97,7 +95,7 @@ export default function BrandStatement() {
 
       {/* Quote */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <div className="w-12 h-px bg-[var(--color-rose-soft)] mx-auto mb-8" />
+        <div className="w-12 h-px bg-rose-soft mx-auto mb-8" />
         <blockquote
           ref={quoteRef}
           className="font-serif text-white text-[clamp(1.8rem,4vw,3.5rem)] font-light leading-[1.2] tracking-wide italic opacity-0"
@@ -105,7 +103,7 @@ export default function BrandStatement() {
           « L&apos;élégance n&apos;est pas d&apos;être remarquée, c&apos;est
           d&apos;être mémorisée. »
         </blockquote>
-        <p className="mt-6 text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-rose-soft)]">
+        <p className="mt-6 text-[0.65rem] tracking-[0.3em] uppercase text-rose-soft">
           — Giorgio Armani
         </p>
         <div className="mt-10">

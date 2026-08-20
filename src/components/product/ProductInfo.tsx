@@ -1,6 +1,5 @@
 "use client";
 
-// ProductInfo: product details panel with favorite toggle and contact CTA.
 import { useRef, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 import { registerGSAPPlugins } from "@/lib/gsap";
@@ -22,7 +21,6 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
   const category = categories.find((c) => c.slug === product.category);
 
-  // Entrance animation
   useEffect(() => {
     registerGSAPPlugins();
     const panel = panelRef.current;
@@ -46,32 +44,32 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   return (
     <div ref={panelRef} className="flex flex-col gap-6 opacity-0">
       {/* Category breadcrumb */}
-      <p className="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-rose-main)]">
+      <p className="text-[0.65rem] tracking-[0.25em] uppercase text-rose-main">
         {category?.name ?? product.category}
       </p>
 
       {/* Product name */}
       <div>
-        <h1 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-[var(--color-ink)] leading-tight tracking-wide">
+        <h1 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-ink leading-tight tracking-wide">
           {product.name}
         </h1>
         {product.isNew && (
-          <span className="inline-block mt-2 bg-[var(--color-rose-main)] text-white text-[0.6rem] tracking-[0.15em] uppercase px-3 py-1">
+          <span className="inline-block mt-2 bg-rose-main text-white text-[0.6rem] tracking-[0.15em] uppercase px-3 py-1">
             Nouveau
           </span>
         )}
       </div>
 
       {/* Price */}
-      <p className="font-sans text-2xl font-light text-[var(--color-ink)]">
+      <p className="font-sans text-2xl font-light text-ink">
         {product.price.toLocaleString("fr-FR")} €
       </p>
 
       {/* Divider */}
-      <div className="h-px bg-[var(--color-rose-soft)]" />
+      <div className="h-px bg-rose-soft" />
 
       {/* Description */}
-      <p className="text-[var(--color-ink-soft)] text-sm leading-relaxed">
+      <p className="text-ink-soft text-sm leading-relaxed">
         {product.description}
       </p>
 
@@ -81,9 +79,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           {product.details.map((detail) => (
             <li
               key={detail}
-              className="flex items-center gap-2 text-xs text-[var(--color-ink-soft)]"
+              className="flex items-center gap-2 text-xs text-ink-soft"
             >
-              <span className="w-1 h-1 rounded-full bg-[var(--color-rose-main)]" />
+              <span className="w-1 h-1 rounded-full bg-rose-main" />
               {detail}
             </li>
           ))}
@@ -104,8 +102,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           className={[
             "w-12 h-12 flex items-center justify-center border transition-all duration-300",
             isFav
-              ? "border-[var(--color-rose-main)] bg-[var(--color-rose-blush)]"
-              : "border-[var(--color-ink-soft)]/30 hover:border-[var(--color-rose-main)]",
+              ? "border-rose-main bg-rose-blush"
+              : "border-ink-soft/30 hover:border-rose-main",
           ].join(" ")}
         >
           <Heart
@@ -118,7 +116,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* Shipping note */}
-      <p className="text-[0.65rem] tracking-wide text-[var(--color-ink-soft)]/50">
+      <p className="text-[0.65rem] tracking-wide text-ink-soft/50">
         Livraison offerte dès 150 € · Retours gratuits sous 14 jours
       </p>
     </div>

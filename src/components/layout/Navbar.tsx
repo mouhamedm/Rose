@@ -1,7 +1,5 @@
 "use client";
 
-// Navbar: editorial style with centered logo.
-// Becomes opaque after 80px of scroll; transparent at top over hero sections.
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,19 +23,16 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Scroll-based background transition
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change (deferred to avoid setState-in-effect lint error)
   useEffect(() => {
     queueMicrotask(() => setMenuOpen(false));
   }, [pathname]);
 
-  // Entrance animation on mount
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
@@ -56,13 +51,13 @@ export default function Navbar() {
         ref={navRef}
         style={{ opacity: 0 }}
         className={[
-          "fixed top-0 left-0 right-0 z-[500] transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-500 transition-all duration-500",
           scrolled || !isHome
-            ? "bg-[var(--color-cream)] border-b border-[var(--color-rose-soft)] shadow-sm"
+            ? "bg-cream border-b border-rose-soft shadow-sm"
             : "bg-transparent",
         ].join(" ")}
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="max-w-350 mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* Left navigation links (desktop) */}
@@ -74,8 +69,8 @@ export default function Navbar() {
                   className={[
                     "text-[0.7rem] tracking-[0.2em] uppercase transition-colors duration-200",
                     pathname === link.href
-                      ? "text-[var(--color-rose-main)]"
-                      : "text-[var(--color-ink-soft)] hover:text-[var(--color-rose-main)]",
+                      ? "text-rose-main"
+                      : "text-ink-soft hover:text-rose-main",
                   ].join(" ")}
                 >
                   {link.label}
@@ -86,7 +81,7 @@ export default function Navbar() {
             {/* Centered logo (desktop) / Left logo (mobile) */}
             <Link
               href="/"
-              className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 font-serif text-2xl lg:text-3xl font-light tracking-[0.25em] text-[var(--color-ink)] hover:text-[var(--color-rose-main)] transition-colors duration-300"
+              className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 font-serif text-2xl lg:text-3xl font-light tracking-[0.25em] text-ink hover:text-rose-main transition-colors duration-300"
             >
               ROSÉ
             </Link>
@@ -100,8 +95,8 @@ export default function Navbar() {
                   className={[
                     "text-[0.7rem] tracking-[0.2em] uppercase transition-colors duration-200",
                     pathname === link.href
-                      ? "text-[var(--color-rose-main)]"
-                      : "text-[var(--color-ink-soft)] hover:text-[var(--color-rose-main)]",
+                      ? "text-rose-main"
+                      : "text-ink-soft hover:text-rose-main",
                     link.href === "/favorites" ? "flex items-center gap-1.5" : "",
                   ].join(" ")}
                 >
@@ -113,7 +108,7 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden ml-auto text-[var(--color-ink)] p-2"
+              className="lg:hidden ml-auto text-ink p-2"
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             >
@@ -126,7 +121,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div
         className={[
-          "fixed inset-0 z-[499] bg-[var(--color-cream)] flex flex-col items-center justify-center transition-all duration-500 lg:hidden",
+          "fixed inset-0 z-499 bg-cream flex flex-col items-center justify-center transition-all duration-500 lg:hidden",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
       >
@@ -135,7 +130,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-serif text-4xl font-light tracking-widest text-[var(--color-ink)] hover:text-[var(--color-rose-main)] transition-colors"
+              className="font-serif text-4xl font-light tracking-widest text-ink hover:text-rose-main transition-colors"
             >
               {link.label}
             </Link>

@@ -1,34 +1,29 @@
 @import "tailwindcss";
 
-/* ─── Design tokens — Dark Mode ────────────────────────────────────────── */
 @theme {
-  /* Palette ROSÉ — dark */
-  --color-cream:        #121212;   /* main page background — neutral soft black */
-  --color-rose-blush:   #181818;   /* card / section backgrounds — slightly lighter */
-  --color-rose-light:   #1f1f1f;   /* slightly lighter surface */
-  --color-rose-soft:    #c49db5;   /* muted rose for subtle accents */
-  --color-rose-main:    #d4698a;   /* primary rose accent — unchanged */
-  --color-rose-deep:    #a84d6b;   /* darker rose */
-  --color-rose-dark:    #6b2d44;   /* deepest rose */
-  --color-dark-surface: #080808;   /* footer / heavy dark overlays — very deep black */
-  --color-ink:          #f0f0f0;   /* main text — pure soft white */
-  --color-ink-soft:     #a0a0a0;   /* secondary text — neutral grey */
+  --color-cream:        #121212; 
+  --color-rose-blush:   #181818;   
+  --color-rose-light:   #1f1f1f;  
+  --color-rose-soft:    #c49db5;   
+  --color-rose-main:    #d4698a;  
+  --color-rose-deep:    #a84d6b;  
+  --color-rose-dark:    #6b2d44;  
+  --color-dark-surface: #080808;   
+  --color-ink:          #f0f0f0;  
+  --color-ink-soft:     #a0a0a0; 
 
-  /* Typography */
   --font-serif:         var(--font-cormorant), "Georgia", serif;
   --font-sans:          var(--font-inter), system-ui, sans-serif;
 
-  /* Spacing scale */
   --spacing-section:    6rem;
 
-  /* Transitions */
   --ease-smooth:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out-expo:      cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: auto; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,18 +36,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Hide native cursor — CustomCursor component takes over (desktop only) */
 @media (pointer: fine) {
   *, *::before, *::after {
     cursor: none !important;
   }
 }
 
-/* ─── Typography helpers ─────────────────────────────────────────────────── */
 .font-serif  { font-family: var(--font-serif); }
 .font-sans   { font-family: var(--font-sans); }
 
-/* Elegant heading style */
 .heading-display {
   font-family: var(--font-serif);
   font-weight: 300;
@@ -60,11 +52,6 @@ body {
   line-height: 1.05;
 }
 
-/* ─── Fill / Wipe hover effect ───────────────────────────────────────────── */
-/*
-  Shared setup for the directional fill effect used on buttons and product cards.
-  The actual GSAP animation is applied via JS; this sets the structural foundation.
-*/
 .fill-hover {
   position: relative;
   overflow: hidden;
@@ -82,13 +69,11 @@ body {
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Elements inside fill-hover sit above the wipe layer */
 .fill-hover > * {
   position: relative;
   z-index: 1;
 }
 
-/* ─── Scrollbar styling ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -100,13 +85,11 @@ body {
   border-radius: 2px;
 }
 
-/* ─── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
   background-color: var(--color-rose-soft);
   color: var(--color-rose-dark);
 }
 
-/* ─── Utility: visually hidden (accessibility) ───────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -119,7 +102,6 @@ body {
   border-width: 0;
 }
 
-/* ─── Page transition overlay ────────────────────────────────────────────── */
 #page-transition {
   position: fixed;
   inset: 0;

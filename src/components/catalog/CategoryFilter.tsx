@@ -21,8 +21,8 @@ export default function CategoryFilter({
         className={[
           "text-[0.65rem] tracking-[0.2em] uppercase px-5 py-2.5 border transition-all duration-300",
           !active
-            ? "bg-[var(--color-rose-main)] text-white border-[var(--color-rose-main)]"
-            : "border-[var(--color-ink-soft)]/40 text-[var(--color-ink-soft)] hover:border-[var(--color-rose-main)] hover:text-[var(--color-rose-main)]",
+            ? "bg-rose-main text-white border-rose-main"
+            : "border-ink-soft/40 text-ink-soft hover:border-rose-main hover:text-rose-main",
         ].join(" ")}
       >
         Tout
@@ -35,8 +35,8 @@ export default function CategoryFilter({
           className={[
             "text-[0.65rem] tracking-[0.2em] uppercase px-5 py-2.5 border transition-all duration-300",
             active === cat.slug
-              ? "bg-[var(--color-rose-main)] text-white border-[var(--color-rose-main)]"
-              : "border-[var(--color-ink-soft)]/40 text-[var(--color-ink-soft)] hover:border-[var(--color-rose-main)] hover:text-[var(--color-rose-main)]",
+              ? "bg-rose-main text-white border-rose-main"
+              : "border-ink-soft/40 text-ink-soft hover:border-rose-main hover:text-rose-main",
           ].join(" ")}
         >
           {cat.name}

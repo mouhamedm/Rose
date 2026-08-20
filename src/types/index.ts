@@ -1,5 +1,3 @@
-// Core domain types for the ROSÉ e-commerce platform
-
 export type CategorySlug =
   | "robes-courtes"
   | "robes-longues"
@@ -18,7 +16,7 @@ export interface Product {
   slug: string;
   name: string;
   category: CategorySlug;
-  price: number; // in euros (e.g. 129.00)
+  price: number;
   images: string[];
   description: string;
   details?: string[];
@@ -27,7 +25,7 @@ export interface Product {
 }
 
 export interface FavoriteStore {
-  favorites: string[]; // product ids
+  favorites: string[];
   toggle: (id: string) => void;
   isFavorite: (id: string) => boolean;
 }

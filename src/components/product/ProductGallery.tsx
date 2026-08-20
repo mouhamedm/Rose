@@ -1,7 +1,5 @@
 "use client";
 
-// ProductGallery: primary image with thumbnail strip.
-// Click thumbnails to swap the main image with a smooth crossfade.
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
@@ -22,7 +20,6 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
       setActiveIndex(index);
       return;
     }
-    // Crossfade: fade out → swap → fade in
     gsap.to(main, {
       opacity: 0,
       duration: 0.25,
@@ -39,7 +36,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
       {/* Main image */}
       <div
         ref={mainRef}
-        className="relative overflow-hidden bg-[var(--color-rose-blush)] aspect-[3/4]"
+        className="relative overflow-hidden bg-rose-blush aspect-3/4"
       >
         <Image
           src={images[activeIndex]}
@@ -62,7 +59,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               className={[
                 "relative overflow-hidden flex-1 aspect-square transition-all duration-300",
                 i === activeIndex
-                  ? "ring-1 ring-[var(--color-rose-main)] opacity-100"
+                  ? "ring-1 ring-rose-main opacity-100"
                   : "opacity-50 hover:opacity-80",
               ].join(" ")}
             >

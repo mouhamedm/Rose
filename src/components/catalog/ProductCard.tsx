@@ -1,8 +1,5 @@
 "use client";
 
-// ProductCard: displays product image, name, price, category badge.
-// Fill/wipe hover effect reveals info overlay from the bottom.
-// Heart button toggles favorite state with a pulse animation.
 import { useRef, MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +10,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 
 interface ProductCardProps {
   product: Product;
-  index?: number; // used for stagger reference
+  index?: number;
 }
 
 export default function ProductCard({ product, index = 0 }: ProductCardProps) {
@@ -22,7 +19,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const heartRef = useRef<HTMLButtonElement>(null);
   const isFav = isFavorite(product.id);
 
-  // Fill wipe: info overlay slides up from bottom
+  // Fill wipe
   const onMouseEnter = () => {
     gsap.to(fillRef.current, {
       scaleY: 1,
@@ -41,7 +38,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
     });
   };
 
-  // Heart pulse animation on click
+  // Heart pulse
   const handleFavorite = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -61,8 +58,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       data-index={index}
     >
       <Link href={`/product/${product.slug}`} className="block">
-        {/* Image container with subtle border */}
-        <div className="relative overflow-hidden bg-[var(--color-rose-blush)] aspect-[3/4] border border-[var(--color-ink-soft)]/25 group-hover:border-[var(--color-rose-main)]/50 transition-colors duration-300">
+        {/* Image container */}
+        <div className="relative overflow-hidden bg-rose-blush aspect-3/4 border border-ink-soft/25 group-hover:border-rose-main/50 transition-colors duration-300">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -73,7 +70,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
           {/* NEW badge */}
           {product.isNew && (
-            <span className="absolute top-3 left-3 bg-[var(--color-rose-main)] text-white text-[0.6rem] tracking-[0.15em] uppercase px-2.5 py-1 z-10">
+            <span className="absolute top-3 left-3 bg-rose-main text-white text-[0.6rem] tracking-[0.15em] uppercase px-2.5 py-1 z-10">
               Nouveau
             </span>
           )}
@@ -93,11 +90,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             />
           </button>
 
-          {/* Fill/wipe overlay — sleek bottom banner with high-contrast action text */}
+          {/* Fill/wipe overlay */}
           <div
             ref={fillRef}
             aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-12 bg-[var(--color-rose-main)] scale-y-0 origin-bottom flex items-center justify-between px-4 z-10"
+            className="absolute inset-x-0 bottom-0 h-12 bg-rose-main scale-y-0 origin-bottom flex items-center justify-between px-4 z-10"
           >
             <span className="text-white text-[0.65rem] tracking-[0.2em] uppercase font-sans font-medium">
               Découvrir le produit
@@ -110,14 +107,14 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         <div className="pt-3 pb-1">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="font-serif text-base font-light text-[var(--color-ink)] tracking-wide">
+              <h3 className="font-serif text-base font-light text-ink tracking-wide">
                 {product.name}
               </h3>
-              <p className="text-[0.65rem] tracking-[0.15em] uppercase text-[var(--color-ink-soft)]/60 mt-0.5">
+              <p className="text-[0.65rem] tracking-[0.15em] uppercase text-ink-soft/60 mt-0.5">
                 {product.category.replace("-", " ")}
               </p>
             </div>
-            <span className="font-sans text-sm text-[var(--color-ink-soft)] whitespace-nowrap">
+            <span className="font-sans text-sm text-ink-soft whitespace-nowrap">
               {product.price.toLocaleString("fr-FR")} €
             </span>
           </div>

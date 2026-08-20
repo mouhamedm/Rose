@@ -16,16 +16,16 @@ export default function CollectionPage() {
     : products;
 
   return (
-    <div className="pt-32 lg:pt-40 pb-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+    <div className="pt-32 lg:pt-40 pb-24 px-6 lg:px-12 max-w-350 mx-auto">
       {/* Header */}
       <div className="mb-12">
-        <p className="text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-rose-main)] mb-3">
+        <p className="text-[0.65rem] tracking-[0.3em] uppercase text-rose-main mb-3">
           La collection
         </p>
-        <SplitTitle as="h1" className="text-[clamp(2.5rem,6vw,5rem)] text-[var(--color-ink)]">
+        <SplitTitle as="h1" className="text-[clamp(2.5rem,6vw,5rem)] text-ink">
           Toutes les pièces
         </SplitTitle>
-        <p className="mt-4 text-[var(--color-ink-soft)] text-sm max-w-md leading-relaxed">
+        <p className="mt-4 text-ink-soft text-sm max-w-md leading-relaxed">
           {filtered.length} pièce{filtered.length > 1 ? "s" : ""} — des robes aux
           ensembles, chaque création ROSÉ est pensée pour sublimer votre féminité.
         </p>

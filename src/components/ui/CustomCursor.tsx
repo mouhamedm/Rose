@@ -1,7 +1,5 @@
 "use client";
 
-// CustomCursor: a small white precise dot + a soft rose glow that trails behind.
-// No scale changes on hover — clean, consistent, editorial.
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 
@@ -10,18 +8,15 @@ export default function CustomCursor() {
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Only on pointer (mouse) devices
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     const dot = dotRef.current;
     const glow = glowRef.current;
     if (!dot || !glow) return;
 
-    // The dot snaps instantly — feels like the real cursor
     const moveDotX = gsap.quickTo(dot, "x", { duration: 0.05, ease: "none" });
     const moveDotY = gsap.quickTo(dot, "y", { duration: 0.05, ease: "none" });
 
-    // The glow lags softly behind
     const moveGlowX = gsap.quickTo(glow, "x", { duration: 0.55, ease: "power3.out" });
     const moveGlowY = gsap.quickTo(glow, "y", { duration: 0.55, ease: "power3.out" });
 
@@ -44,7 +39,6 @@ export default function CustomCursor() {
     document.documentElement.addEventListener("mouseleave", onMouseLeave);
     document.documentElement.addEventListener("mouseenter", onMouseEnter);
 
-    // Show on first move
     gsap.set([dot, glow], { opacity: 0 });
     window.addEventListener("mousemove", onMouseEnter, { once: true });
 
@@ -57,7 +51,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Precise white dot — snaps to cursor */}
       <div
         ref={dotRef}
         aria-hidden="true"
@@ -78,7 +71,6 @@ export default function CustomCursor() {
         }}
       />
 
-      {/* Rose circle — trails behind with lag */}
       <div
         ref={glowRef}
         aria-hidden="true"

@@ -29,7 +29,6 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
   if (!product) notFound();
 
-  // Related products: same category, excluding current
   const related = getProductsByCategory(product.category)
     .filter((p) => p.id !== product.id)
     .slice(0, 3);
@@ -37,29 +36,29 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
   return (
     <div className="pt-24 lg:pt-32">
       {/* Breadcrumb */}
-      <div className="px-6 lg:px-12 max-w-[1400px] mx-auto mb-8">
-        <nav className="flex items-center gap-2 text-[0.65rem] tracking-[0.15em] uppercase text-[var(--color-ink-soft)]/50">
-          <Link href="/" className="hover:text-[var(--color-rose-main)] transition-colors">
+      <div className="px-6 lg:px-12 max-w-350 mx-auto mb-8">
+        <nav className="flex items-center gap-2 text-[0.65rem] tracking-[0.15em] uppercase text-ink-soft/50">
+          <Link href="/" className="hover:text-rose-main transition-colors">
             Accueil
           </Link>
           <span>/</span>
-          <Link href="/collection" className="hover:text-[var(--color-rose-main)] transition-colors">
+          <Link href="/collection" className="hover:text-rose-main transition-colors">
             Collection
           </Link>
           <span>/</span>
           <Link
             href={`/collection/${product.category}`}
-            className="hover:text-[var(--color-rose-main)] transition-colors"
+            className="hover:text-rose-main transition-colors"
           >
             {product.category.replace("-", " ")}
           </Link>
           <span>/</span>
-          <span className="text-[var(--color-ink)]">{product.name}</span>
+          <span className="text-ink">{product.name}</span>
         </nav>
       </div>
 
-      {/* Main product layout: gallery + info */}
-      <div className="px-6 lg:px-12 max-w-[1400px] mx-auto">
+      {/* Main product */}
+      <div className="px-6 lg:px-12 max-w-350 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-10 lg:gap-16">
           <ProductGallery images={product.images} productName={product.name} />
           <ProductInfo product={product} />
@@ -68,9 +67,9 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
       {/* Related products */}
       {related.length > 0 && (
-        <div className="mt-24 px-6 lg:px-12 max-w-[1400px] mx-auto pb-24">
-          <div className="h-px bg-[var(--color-rose-soft)] mb-12" />
-          <h2 className="font-serif text-2xl lg:text-3xl font-light text-[var(--color-ink)] tracking-wide mb-10">
+        <div className="mt-24 px-6 lg:px-12 max-w-350 mx-auto pb-24">
+          <div className="h-px bg-rose-soft mb-12" />
+          <h2 className="font-serif text-2xl lg:text-3xl font-light text-ink tracking-wide mb-10">
             Vous aimerez aussi
           </h2>
           <ProductGrid products={related} />

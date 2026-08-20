@@ -1,7 +1,5 @@
 "use client";
 
-// Reusable button with the ROSÉ fill/wipe hover effect.
-// The fill color rises from bottom on hover and recedes from top on leave.
 import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import Link from "next/link";
@@ -46,15 +44,13 @@ export default function FillButton({
     },
   };
 
-  const { base, fillBg, textHover } = variantStyles[variant];
+  const { base, fillBg } = variantStyles[variant];
 
   const onMouseEnter = () => {
     const fill = fillRef.current;
     const text = textRef.current;
     if (!fill) return;
-    // Fill rises from bottom upward
     gsap.to(fill, { scaleY: 1, transformOrigin: "bottom", duration: 0.45, ease: "power2.out" });
-    // Text color crossfade — dark text (#100d14) for white fill, white text for rose fill
     if (text) gsap.to(text, { color: variant === "outline" ? "#100d14" : "#ffffff", duration: 0.2 });
   };
 
@@ -62,9 +58,7 @@ export default function FillButton({
     const fill = fillRef.current;
     const text = textRef.current;
     if (!fill) return;
-    // Fill descends back down from top — same origin as enter so it mirrors correctly
     gsap.to(fill, { scaleY: 0, transformOrigin: "bottom", duration: 0.4, ease: "power2.in" });
-    // Restore original text color
     if (text) gsap.to(text, { color: "", duration: 0.2 });
   };
 
@@ -79,14 +73,12 @@ export default function FillButton({
 
   const inner = (
     <>
-      {/* The wipe fill layer */}
       <span
         ref={fillRef}
         aria-hidden="true"
         className={["absolute inset-0 z-0 scale-y-0", fillBg].join(" ")}
         style={{ transformOrigin: "bottom" }}
       />
-      {/* Button text stays above fill — color is driven by GSAP, not CSS transitions */}
       <span
         ref={textRef}
         className="relative z-10"

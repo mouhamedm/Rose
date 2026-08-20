@@ -1,7 +1,5 @@
 "use client";
 
-// ProductGrid: renders products in a 3-col responsive grid with scroll-triggered
-// stagger animation — cards cascade into view as the grid enters the viewport.
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { registerGSAPPlugins } from "@/lib/gsap";

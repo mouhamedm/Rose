@@ -1,7 +1,5 @@
 "use client";
 
-// Hero section: full-screen editorial with parallax image, split-text headline,
-// and a subtle vertical scroll indicator.
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/lib/gsap";
@@ -22,7 +20,6 @@ export default function HeroSection() {
     const image = imageRef.current;
     if (!section || !image) return;
 
-    // Parallax: image moves at 40% of scroll speed
     const parallax = gsap.to(image, {
       y: "30%",
       ease: "none",
@@ -34,7 +31,6 @@ export default function HeroSection() {
       },
     });
 
-    // Entrance animations for subtitle + CTA (after preloader)
     const tl = gsap.timeline({ delay: 2.8 });
     tl.fromTo(
       subtitleRef.current,
@@ -59,7 +55,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen min-h-[600px] overflow-hidden"
+      className="relative h-screen min-h-150 overflow-hidden"
     >
       {/* Parallax image */}
       <div
@@ -74,15 +70,12 @@ export default function HeroSection() {
           playsInline
           className="object-cover object-top w-full h-full"
         />
-        {/* Global dark tint for image readability */}
         <div className="absolute inset-0 bg-black/50" />
-        {/* Bottom gradient — makes bottom text block always readable */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-start justify-end pb-32 lg:pb-40 px-6 lg:px-20 max-w-[1400px] mx-auto w-full">
-        {/* Main title — split text reveals after preloader */}
+      <div className="relative z-10 h-full flex flex-col items-start justify-end pb-32 lg:pb-40 px-6 lg:px-20 max-w-350 mx-auto w-full">
+        {/* Main title */}
         <SplitTitle
           as="h1"
           className="text-white text-[clamp(3.5rem,8vw,8rem)] max-w-3xl"

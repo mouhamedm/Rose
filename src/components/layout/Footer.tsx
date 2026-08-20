@@ -16,15 +16,15 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-dark-surface)] text-white pt-20 pb-10 px-6 lg:px-12 mt-auto">
-      <div className="max-w-[1400px] mx-auto">
-        {/* Top: Logo + tagline + links */}
+    <footer className="bg-dark-surface text-white pt-20 pb-10 px-6 lg:px-12 mt-auto">
+      <div className="max-w-350 mx-auto">
+        {/* Logo + tagline + links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
           <div>
             <Link
               href="/"
-              className="font-serif text-3xl font-light tracking-[0.25em] text-white hover:text-[var(--color-rose-soft)] transition-colors"
+              className="font-serif text-3xl font-light tracking-[0.25em] text-white hover:text-rose-soft transition-colors"
             >
               ROSÉ
             </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Collection */}
           <div>
-            <h3 className="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-rose-soft)] mb-5">
+            <h3 className="text-[0.65rem] tracking-[0.25em] uppercase text-rose-soft mb-5">
               Collection
             </h3>
             <ul className="space-y-3">
@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Maison */}
           <div>
-            <h3 className="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-rose-soft)] mb-5">
+            <h3 className="text-[0.65rem] tracking-[0.25em] uppercase text-rose-soft mb-5">
               La Maison
             </h3>
             <ul className="space-y-3">

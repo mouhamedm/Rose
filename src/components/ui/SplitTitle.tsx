@@ -1,7 +1,5 @@
 "use client";
 
-// SplitTitle: animates a heading by revealing each word from below using GSAP SplitText.
-// Triggered by ScrollTrigger when the element enters the viewport.
 import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/lib/gsap";
 import { registerGSAPPlugins } from "@/lib/gsap";
@@ -11,7 +9,6 @@ interface SplitTitleProps {
   children: string;
   className?: string;
   delay?: number;
-  /** If true, animation plays immediately without waiting for scroll */
   immediate?: boolean;
 }
 
@@ -30,13 +27,11 @@ export default function SplitTitle({
     const el = titleRef.current;
     if (!el) return;
 
-    // Split by words, wrap each in overflow:hidden to create the reveal clip
     const split = new SplitText(el, {
       type: "words",
       wordsClass: "split-word",
     });
 
-    // Each word starts translated down (below its clip boundary)
     gsap.set(split.words, { y: "110%", opacity: 0 });
 
     const animProps = {
