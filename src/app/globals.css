@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design tokens — Dark Mode ────────────────────────────────────────── */
+@theme {
+  /* Palette ROSÉ — dark */
+  --color-cream:        #121212;   /* main page background — neutral soft black */
+  --color-rose-blush:   #181818;   /* card / section backgrounds — slightly lighter */
+  --color-rose-light:   #1f1f1f;   /* slightly lighter surface */
+  --color-rose-soft:    #c49db5;   /* muted rose for subtle accents */
+  --color-rose-main:    #d4698a;   /* primary rose accent — unchanged */
+  --color-rose-deep:    #a84d6b;   /* darker rose */
+  --color-rose-dark:    #6b2d44;   /* deepest rose */
+  --color-dark-surface: #080808;   /* footer / heavy dark overlays — very deep black */
+  --color-ink:          #f0f0f0;   /* main text — pure soft white */
+  --color-ink-soft:     #a0a0a0;   /* secondary text — neutral grey */
+
+  /* Typography */
+  --font-serif:         var(--font-cormorant), "Georgia", serif;
+  --font-sans:          var(--font-inter), system-ui, sans-serif;
+
+  /* Spacing scale */
+  --spacing-section:    6rem;
+
+  /* Transitions */
+  --ease-smooth:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-expo:      cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hide native cursor — CustomCursor component takes over (desktop only) */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+/* ─── Typography helpers ─────────────────────────────────────────────────── */
+.font-serif  { font-family: var(--font-serif); }
+.font-sans   { font-family: var(--font-sans); }
+
+/* Elegant heading style */
+.heading-display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* ─── Fill / Wipe hover effect ───────────────────────────────────────────── */
+/*
+  Shared setup for the directional fill effect used on buttons and product cards.
+  The actual GSAP animation is applied via JS; this sets the structural foundation.
+*/
+.fill-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.fill-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--fill-color, var(--color-rose-main));
+  transform: scaleY(0);
+  transform-origin: bottom;
+  z-index: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Elements inside fill-hover sit above the wipe layer */
+.fill-hover > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Scrollbar styling ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-rose-blush);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose-main);
+  border-radius: 2px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-rose-soft);
+  color: var(--color-rose-dark);
+}
+
+/* ─── Utility: visually hidden (accessibility) ───────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── Page transition overlay ────────────────────────────────────────────── */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-rose-blush);
+  z-index: 9999;
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: top;
 }
