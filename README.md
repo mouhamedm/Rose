@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ROSÉ — Women's Ready-to-Wear
 
-## Getting Started
+An **exquisite, high-end fashion e-commerce experience** built with Next.js, Tailwind CSS, and TypeScript, featuring a sophisticated dark aesthetic, fluid GSAP scroll animations, and a meticulously crafted responsive design.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Custom-built cinematic preloader with a pure typographic logo reveal and synchronized progress line animation
+- Immersive storytelling sections with full-screen parallax video backgrounds and staggered text reveals
+- Deep dark mode aesthetic utilizing pure neutral blacks and striking rose accents for a premium luxury feel
+- Advanced GSAP and ScrollTrigger choreography, including elegant slide-up reveals and precise element tracking
+- High-fashion lookbook integration and dynamic product grid with responsive hover states and blur overlays
+- Bespoke typographic hierarchy combining Cormorant Garamond for display elegance and Inter for modern readability
+- Fully responsive architecture — seamless transition from immersive desktop layouts to intuitive, touch-friendly mobile interfaces
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies Used
 
-## Learn More
+- **Next.js 15 (App Router)** – React framework for optimized production, fast rendering, and routing
+- **React 18** – Component-based UI architecture and hooks
+- **TypeScript** – Strongly typed JavaScript for robust, error-free development
+- **Tailwind CSS v4** – Utility-first styling for responsive layouts and bespoke luxury design tokens
+- **GSAP 3.12 + ScrollTrigger** – Advanced timeline choreography, fluid transitions, and scroll-bound animations
+- **Custom Fonts** – Cormorant (Serif) and Inter (Sans-serif) optimized via `next/font`
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![ROSÉ Preview](public/images/preview.png)
+# Ros-
